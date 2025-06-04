@@ -5,10 +5,13 @@ const connectDB = require("./config/db");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const userRoutes = require("./routes/userRoutes");
+const articleRoutes = require("./routes/articleRoutes");
 
 app.use(express.json());
 app.use(cors());
+
 app.use("/api/users", userRoutes);
+app.use("/api/articles", articleRoutes);
 
 connectDB();
 
