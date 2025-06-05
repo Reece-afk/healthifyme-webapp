@@ -69,6 +69,37 @@ function Home() {
           Mehr anzeigen
         </Button>
       )}
+
+      {user && (
+        <form onSubmit={handleSubmit} style={{ marginTop: "2rem" }}>
+          <h2>Neuen Artikel erstellen:</h2>
+          <div>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Titel"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <textarea
+              name="content"
+              id="content"
+              placeholder="Inhalt"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+              rows={6}
+            ></textarea>
+            <Button variant="contained" type="submit">
+              Senden
+            </Button>
+          </div>
+        </form>
+      )}
     </div>
   );
 }
