@@ -1,28 +1,44 @@
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import { useSelector } from "react-redux";
 
 function Home() {
   const [articles, setArticles] = useState([]);
   const [visibleCount, setVisibleCount] = useState(3);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const user = useSelector((state) => state.auth.user);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  const fetchArticles = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get("/articles");
+      setArticles(response.data);
+    } catch (error) {
+      setError("Fehler beim Laden der Artikel");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        setLoading(true);
-        const response = await api.get("/articles");
-        setArticles(response.data);
-      } catch (error) {
-        setError("Fehler beim Laden der Artikel");
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchArticles();
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await api.post("/articles", { title, content });
+      setTitle("");
+      setContent("");
+      fetchArticles();
+    } catch (error) {
+      alert("Fehler beim Erstellen des Artikels!");
+    }
+  };
 
   return (
     <div>
