@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "./redux/authSlice";
+import Cookies from "js-cookie";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -19,7 +20,14 @@ function App() {
         <Link to={"/"}>Home</Link> | <Link to={"/kontakt"}>Kontakt</Link> |{" "}
         <Link to={"/aboutus"}>Über Uns</Link> |{" "}
         {user ? (
-          <button onClick={() => dispatch(logout())}>Logout</button>
+          <button
+            onClick={() => {
+              Cookies.remove("token");
+              dispatch(logout());
+            }}
+          >
+            Logout
+          </button>
         ) : (
           <Link to={"/login"}>Login</Link>
         )}
