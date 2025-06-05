@@ -42,66 +42,73 @@ function Home() {
   };
 
   return (
-    <div>
+    <main>
       <h1>Home</h1>
-      <h2>Aktuelle Artikel</h2>
-      {loading && <p>Lade Artikel...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
 
-      {articles.slice(0, visibleCount).map((article) => (
-        <div
-          key={article._id}
-          style={{
-            border: "1px solid #ccc",
-            margin: "1rem 0",
-            padding: "1rem",
-          }}
-        >
-          <h3>{article.title}</h3>
-          <p>{article.content}</p>
-        </div>
-      ))}
+      <section aria-labelledby="article-section-heading">
+        <h2 id="article-section-heading">Aktuelle Artikel</h2>
 
-      {visibleCount < articles.length && (
-        <Button
-          variant="contained"
-          onClick={() => setVisibleCount((prev) => prev + 3)}
-        >
-          Mehr anzeigen
-        </Button>
-      )}
+        {loading && <p>Lade Artikel...</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
+
+        {articles.slice(0, visibleCount).map((article) => (
+          <article
+            key={article._id}
+            style={{
+              border: "1px solid #ccc",
+              margin: "1rem 0",
+              padding: "1rem",
+            }}
+          >
+            <h3>{article.title}</h3>
+            <p>{article.content}</p>
+          </article>
+        ))}
+        {visibleCount < articles.length && (
+          <Button
+            variant="contained"
+            onClick={() => setVisibleCount((prev) => prev + 3)}
+          >
+            Mehr anzeigen
+          </Button>
+        )}
+      </section>
 
       {user && (
-        <form onSubmit={handleSubmit} style={{ marginTop: "2rem" }}>
-          <h2>Neuen Artikel erstellen:</h2>
-          <div>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              placeholder="Titel"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <textarea
-              name="content"
-              id="content"
-              placeholder="Inhalt"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              required
-              rows={6}
-            ></textarea>
-            <Button variant="contained" type="submit">
-              Senden
-            </Button>
-          </div>
-        </form>
+        <section aria-labelledby="new-article-form-heading">
+          <h2 id="new-article-form-heading">Neuen Artikel erstellen:</h2>
+          <form onSubmit={handleSubmit} style={{ marginTop: "2rem" }}>
+            <div>
+              <label htmlFor="title">Titel:</label> <br />
+              <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Titel"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="content">Kommentar:</label> <br />
+              <textarea
+                name="content"
+                id="content"
+                placeholder="Inhalt"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+                rows={6}
+              ></textarea>
+              <Button variant="contained" type="submit">
+                Senden
+              </Button>
+            </div>
+          </form>
+        </section>
       )}
-    </div>
+    </main>
   );
 }
 

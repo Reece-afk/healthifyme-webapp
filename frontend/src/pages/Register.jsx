@@ -35,22 +35,28 @@ function Register() {
     <div>
       <h2>Registrieren</h2>
       <form onSubmit={handleSubmit}>
+        <label htmlFor="email">E-Mail:</label>
         <input
           type="email"
+          id="email"
           placeholder="E-Mail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />{" "}
         <br />
+        <label htmlFor="password">Passwort:</label>
         <input
           type="password"
+          id="password"
           placeholder="Passwort"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />{" "}
         <br />
+        <label htmlFor="repeatPassword">Passwort wiederholen:</label>
         <input
           type="password"
+          id="repeatPassword"
           placeholder="Passwort wiederholen"
           value={repeatPassword}
           onChange={(e) => setRepeatPassword(e.target.value)}
