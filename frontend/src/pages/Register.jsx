@@ -18,6 +18,10 @@ function Register() {
     }
   }, [user, navigate]);
 
+  useEffect(() => {
+    document.title = "HealthifyMe – Registrierung";
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== repeatPassword) {

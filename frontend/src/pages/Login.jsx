@@ -20,6 +20,10 @@ function Login() {
     }
   }, [user, navigate]);
 
+  useEffect(() => {
+    document.title = "HealthifyMe – Login";
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginStart({ email, password }));
