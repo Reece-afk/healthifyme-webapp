@@ -5,14 +5,24 @@ import Kontakt from "./pages/Kontakt";
 import AboutUs from "./pages/AboutUs";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { logout } from "./redux/authSlice";
 
 function App() {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   return (
     <BrowserRouter>
       <nav>
         <Link to={"/"}>Home</Link> | <Link to={"/kontakt"}>Kontakt</Link> |{" "}
-        <Link to={"/aboutus"}>Über Uns</Link> | <Link to={"/login"}>Login</Link>{" "}
-        |{" "}
+        <Link to={"/aboutus"}>Über Uns</Link> |{" "}
+        {user ? (
+          <button onClick={() => dispatch(logout())}>Logout</button>
+        ) : (
+          <Link to={"/login"}>Login</Link>
+        )}
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
