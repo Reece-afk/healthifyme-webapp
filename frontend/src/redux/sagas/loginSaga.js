@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import api from "../../services/api";
-import { loginSuccess, loginFailure } from "../authSlice";
+import { loginSuccess, loginFailure, loginStart } from "../authSlice";
 
 function* loginSaga(action) {
   try {
@@ -14,5 +14,5 @@ function* loginSaga(action) {
 }
 
 export default function* watchLoginSaga() {
-  yield takeLatest("auth/loginStart", loginSaga);
+  yield takeLatest(loginStart, loginSaga);
 }
