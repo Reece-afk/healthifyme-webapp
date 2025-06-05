@@ -1,5 +1,16 @@
 const Article = require("../models/Articles");
 
+const getArticles = async (req, res) => {
+  try {
+    const articles = await Article.find().sort({ createdAt: -1 });
+    res.status(200).json(articles);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ messgae: "Fehler beim Laden der Artikel", error: error.message });
+  }
+};
+
 const createArticle = async (req, res) => {
   try {
     const { title, content } = req.body;
@@ -27,4 +38,7 @@ const createArticle = async (req, res) => {
   }
 };
 
-module.exports = createArticle;
+module.exports = {
+  createArticle,
+  getArticles,
+};
