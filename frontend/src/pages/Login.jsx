@@ -46,6 +46,7 @@ function Login() {
         <button type="submit" disabled={loading}>
           {loading ? "Bitte warten..." : "Einloggen"}
         </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
       <p>
         Noch kein Konto? <a href="/register">Hier registrieren!</a>
