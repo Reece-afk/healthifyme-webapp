@@ -1,0 +1,76 @@
+# HealthifyMe – Fullstack WebApp
+
+## Projektübersicht
+
+HealthifyMe ist eine moderne Webanwendung zur Artikelverwaltung mit Nutzerregistrierung, Authentifizierung und Artikelveröffentlichung.
+
+Technologien:
+
+- **Frontend:** React, Redux, Redux Saga, Material UI
+- **Backend:** Node.js, Express, MongoDB
+- **Sonstiges:** JWT, Cookies, Vercel (CI/CD)
+
+---
+
+## Funktionsumfang
+
+- Nutzerregistrierung & Login
+- Artikel erstellen, laden (öffentlich), und schreiben (eingeloggt)
+- Navigation zwischen Seiten (Home, Kontakt, Über uns, Login/Register)
+- Responsives UI mit Material UI
+- (Demo) Artikelanzeige & Formulare
+
+---
+
+## .env-Datei (nur bei lokaler Ausführung notwendig)
+
+Für den Betrieb des Backends wird eine `.env`-Datei im Ordner `/backend` benötigt. Beispielinhalt:
+
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/healthifyme
+JWT_SECRET=secretjwtkey
+
+> Diese Datei ist in `.gitignore` eingetragen und wird **nicht** im Repository angezeigt.
+> Beim ZIP-Export ist sie enthalten.
+
+## CI/CD Deployment
+
+### CI/CD mit Vercel
+
+- Das Frontend wird bei jedem Commit auf `main` automatisch gebaut und deployed.
+- Tool: [Vercel](https://vercel.com)
+- Repository: [`reece-afk/healthifyme-webapp`](https://github.com/reece-afk/healthifyme-webapp)
+- Verknüpfung über GitHub
+- Framework-Preset: Create React App
+- Build-Command: `npm run build`
+- Output: `/build`
+- Root Directory: `/frontend`
+
+### Deployment-URL (Frontend)
+
+[https://healthifyme-webapp.vercel.app](https://healthifyme-webapp.vercel.app)
+
+Hinweis: Das Backend wurde **nicht deployed**, sondern lokal betrieben.
+Daher ist die Webapp **nicht voll funktionsfähig** (Login & Artikelanzeige sind ohne Server nicht möglich).
+
+---
+
+**GitHub-Link zum Projekt**
+
+Das Projekt wurde während der Entwicklung über Git versioniert und ist auch auf GitHub verfügbar:
+
+https://github.com/Reece-afk/healthifyme-webapp
+
+Hinweis:
+Dieses Repository ist aktuell **privat**.  
+Ein Zugriff ist **nicht öffentlich möglich** und erfordert eine Freigabe durch die Repository-Inhaberin.
+
+Wenn Sie Zugriff wünschen, kontaktieren Sie mich bitte per E-Mail oder GitHub-Accountanfrage.
+
+---
+
+## Unit-Tests
+
+- Ein Unit-Test für den Login wurde erstellt (Jest + React Testing Library).
+- Aktuell **nicht ausführbar** durch ein Konfigurationsproblem mit `react-router-dom`.
+- Die Datei `Login.test.jsx` liegt im Verzeichnis `src/pages/`.
