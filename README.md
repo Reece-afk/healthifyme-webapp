@@ -71,6 +71,9 @@ Wenn Sie Zugriff wünschen, kontaktieren Sie mich bitte per E-Mail oder GitHub-A
 
 ## Unit-Tests
 
-- Ein Unit-Test für den Login wurde erstellt (Jest + React Testing Library).
-- Aktuell **nicht ausführbar** durch ein Konfigurationsproblem mit `react-router-dom`.
-- Die Datei `Login.test.jsx` liegt im Verzeichnis `src/pages/`.
+Ein Unit-Test für den Login wurde erfolgreich erstellt (Jest + React Testing Library).  
+Dabei wird überprüft, ob beim Absenden des Formulars die `loginStart`-Action korrekt aufgerufen wird.
+
+- Getestete Datei: `Login.test.jsx` im Verzeichnis `src/pages/`
+- Test läuft erfolgreich (`npm test`)
+- Hinweis: Zur Kompatibilität wurde `react-router-dom` auf **Version 6** gesetzt.
