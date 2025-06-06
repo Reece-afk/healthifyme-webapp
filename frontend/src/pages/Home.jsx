@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Box, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useSelector } from "react-redux";
@@ -42,8 +42,13 @@ function Home() {
   };
 
   return (
-    <main>
-      <h1>Home</h1>
+    <Box
+      component="main"
+      sx={{ padding: { xs: 2, sm: 4 }, maxWidth: "900px", margin: "0 auto" }}
+    >
+      <Typography variant="h3" gutterBottom>
+        Home
+      </Typography>
 
       <section aria-labelledby="article-section-heading">
         <h2 id="article-section-heading">Aktuelle Artikel</h2>
@@ -52,63 +57,76 @@ function Home() {
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         {articles.slice(0, visibleCount).map((article) => (
-          <article
+          <Box
             key={article._id}
-            style={{
+            sx={{
               border: "1px solid #ccc",
-              margin: "1rem 0",
-              padding: "1rem",
+              borderRadius: "8px",
+              padding: 2,
+              marginBottom: 2,
             }}
           >
-            <h3>{article.title}</h3>
-            <p>{article.content}</p>
-          </article>
+            <Typography variant="h6">{article.title}</Typography>
+            <Typography>{article.content}</Typography>
+          </Box>
         ))}
         {visibleCount < articles.length && (
-          <Button
-            variant="contained"
-            onClick={() => setVisibleCount((prev) => prev + 3)}
-          >
-            Mehr anzeigen
-          </Button>
+          <Box textAlign="center" mt={2}>
+            <Button
+              variant="contained"
+              onClick={() => setVisibleCount((prev) => prev + 3)}
+            >
+              Mehr anzeigen
+            </Button>
+          </Box>
         )}
       </section>
 
       {user && (
         <section aria-labelledby="new-article-form-heading">
-          <h2 id="new-article-form-heading">Neuen Artikel erstellen:</h2>
-          <form onSubmit={handleSubmit} style={{ marginTop: "2rem" }}>
-            <div>
-              <label htmlFor="title">Titel:</label> <br />
-              <input
-                type="text"
-                name="title"
-                id="title"
-                placeholder="Titel"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="content">Kommentar:</label> <br />
-              <textarea
-                name="content"
-                id="content"
-                placeholder="Inhalt"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                required
-                rows={6}
-              ></textarea>
-              <Button variant="contained" type="submit">
-                Senden
-              </Button>
-            </div>
-          </form>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{
+              mt: 4,
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+            }}
+          >
+            <Typography variant="h4">Neuen Artikel erstellen:</Typography>
+
+            <TextField
+              label="Titel"
+              name="title"
+              id="title"
+              placeholder="Titel"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+              fullWidth
+            />
+
+            <TextField
+              label="Kommentar"
+              name="content"
+              id="content"
+              placeholder="Inhalt"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+              fullWidth
+              multiline
+              rows={6}
+            />
+
+            <Button type="submit" variant="contained">
+              Senden
+            </Button>
+          </Box>
         </section>
       )}
-    </main>
+    </Box>
   );
 }
 
