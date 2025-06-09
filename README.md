@@ -28,7 +28,7 @@ Für den Betrieb des Backends wird eine `.env`-Datei im Ordner `/backend` benöt
 
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/healthifyme
-JWT_SECRET=secretjwtkey
+JWT_SECRET=dein_geheimer_key
 
 > Diese Datei ist in `.gitignore` eingetragen und wird **nicht** im Repository angezeigt.
 > Beim ZIP-Export ist sie enthalten.
@@ -52,20 +52,6 @@ JWT_SECRET=secretjwtkey
 
 Hinweis: Das Backend wurde **nicht deployed**, sondern lokal betrieben.
 Daher ist die Webapp **nicht voll funktionsfähig** (Login & Artikelanzeige sind ohne Server nicht möglich).
-
----
-
-**GitHub-Link zum Projekt**
-
-Das Projekt wurde während der Entwicklung über Git versioniert und ist auch auf GitHub verfügbar:
-
-https://github.com/Reece-afk/healthifyme-webapp
-
-Hinweis:
-Dieses Repository ist aktuell **privat**.  
-Ein Zugriff ist **nicht öffentlich möglich** und erfordert eine Freigabe durch die Repository-Inhaberin.
-
-Wenn Sie Zugriff wünschen, kontaktieren Sie mich bitte per E-Mail oder GitHub-Accountanfrage.
 
 ---
 
