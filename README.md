@@ -58,7 +58,7 @@ Daher ist die Webapp **nicht voll funktionsfähig** (Login & Artikelanzeige sind
 ## Unit-Tests
 
 Ein Unit-Test für den Login wurde erfolgreich erstellt (Jest + React Testing Library).  
-Dabei wird überprüft, ob beim Absenden des Formulars die `loginStart`-Action korrekt aufgerufen wird.
+Es wird überprüft, ob beim Absenden des Formulars die `loginStart`-Action korrekt aufgerufen wird.
 
 - Getestete Datei: `Login.test.jsx` im Verzeichnis `src/pages/`
 - Test läuft erfolgreich (`npm test`)
